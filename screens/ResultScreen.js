@@ -9,7 +9,7 @@ export function ResultScreen({ route, navigation }) {
   const { rolls, time, score } = route.params;
   const bestScore = useSelector(state => state.tenzies.bestScore);
   const dispatch = useDispatch();
-  const [showConfetti, setShowConfetti] = useState(true);
+  const [showConfetti, setShowConfetti] = useState(true)
   const sound = useRef(null)
 
   useEffect(() => {
