@@ -1,0 +1,47 @@
+default_platform(:android)
+
+platform :android do
+  desc "Deploy to Play Store Internal Testing"
+  lane :internal do
+    upload_to_play_store(
+      track: 'internal',
+      aab: '../builds/' + Dir.glob('../builds/*.aab').max_by {|f| File.mtime(f)}.split('/').last,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Deploy to Play Store Alpha"
+  lane :alpha do
+    upload_to_play_store(
+      track: 'alpha',
+      aab: '../builds/' + Dir.glob('../builds/*.aab').max_by {|f| File.mtime(f)}.split('/').last,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Deploy to Play Store Beta"
+  lane :beta do
+    upload_to_play_store(
+      track: 'beta',
+      aab: '../builds/' + Dir.glob('../builds/*.aab').max_by {|f| File.mtime(f)}.split('/').last,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Deploy to Play Store Production"
+  lane :production do
+    upload_to_play_store(
+      track: 'production',
+      aab: '../builds/' + Dir.glob('../builds/*.aab').max_by {|f| File.mtime(f)}.split('/').last,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+end
